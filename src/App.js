@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import PrintContentsOfPDF from './Components/PrintContentsOfPDF';
+import OpenAi from './Components/OpenAi';
+import Webhook from './Components/Webhook';
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <PrintContentsOfPDF />
+      <OpenAi />
+      <Webhook />
     </div>
   );
 }
