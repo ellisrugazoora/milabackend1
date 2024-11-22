@@ -1,7 +1,8 @@
-import { OpenAI } from 'openai'
-import { useState } from 'react';
+// import { OpenAI } from 'openai'
+// import { useState } from 'react';
 
 function OpenAi(){
+    /*
     // const [inputText, setInputText] = useState('');
     const [response, setResponse] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -29,14 +30,15 @@ function OpenAi(){
             setLoading(false);
         }
     }
+        */
     return (
         <div>
             <p>OpenAi</p>
-            <button onClick={printkey}>Print key</button>
+            {/* <button onClick={printkey}>Print key</button>
             <button onClick={submitQuery}>Submit query</button>
             {loading && <p>Loading...</p>}
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            {response && <p><strong>Response: </strong>{response}</p>}
+            {response && <p><strong>Response: </strong>{response}</p>} */}
         </div>
     )
 }
