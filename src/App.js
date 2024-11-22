@@ -3,6 +3,7 @@ import './App.css';
 import PrintContentsOfPDF from './Components/PrintContentsOfPDF';
 import OpenAi from './Components/OpenAi';
 import Webhook from './Components/Webhook';
+import Apicall from './Components/Apicall';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <PrintContentsOfPDF />
       <OpenAi />
       <Webhook />
+      <Apicall />
     </div>
   );
 }
