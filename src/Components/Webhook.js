@@ -7,7 +7,7 @@ function Webhook(){
         const data = await response.json();
         console.log(data);
         setWebhooks(data)
-        alert(JSON.stringify(data, null, 2)); // Show the data in an alert box
+        //alert(JSON.stringify(data, null, 2)); // Show the data in an alert box
     }
     return (
         <div>
