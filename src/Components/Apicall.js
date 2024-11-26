@@ -1,6 +1,7 @@
-import React from "react";
+// import React, { useState } from "react";
 
 function Apicall(){
+
     const backendUrl = "https://nodebackend-smmy.onrender.com/api/openai";
     const sendRequest = async () => {
         try {
@@ -21,6 +22,7 @@ function Apicall(){
         <div>
             <p>API call</p>
             <button onClick={sendRequest}>Send request</button>
+            
         </div>
         
     )
