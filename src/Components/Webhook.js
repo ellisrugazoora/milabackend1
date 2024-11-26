@@ -12,7 +12,7 @@ function Webhook(){
     return (
         <div>
             <button onClick={fetchwebhook}>Fetch Webhooks</button>
-            {webhooks}
+            {/* {webhooks} */}
         </div>
     )
 }
