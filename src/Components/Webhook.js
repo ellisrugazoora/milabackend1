@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { io } from "socket.io-client";
 
 function Webhook(){
     const [webhooks, setWebhooks] = useState(0);
@@ -12,7 +13,7 @@ function Webhook(){
     return (
         <div>
             <button onClick={fetchwebhook}>Fetch Webhooks</button>
-            {/* {webhooks} */}
+            {JSON.stringify(webhooks, null, 2)}
         </div>
     )
 }
