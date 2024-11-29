@@ -5,6 +5,7 @@ import Apicall from "./Apicall";
 const PrintContentsOfPDF = () => {
   const [pdfContent, setPdfContent] = useState("");
   const [summary, setSummary] = useState("")
+  const backendUrl = "https://nodebackend-smmy.onrender.com/api/openai";
   var count = 0;
   const handleFileChange = (event) => {
     const files = event.target.files;
@@ -29,7 +30,7 @@ const PrintContentsOfPDF = () => {
             setPdfContent(current => current + `\n ${file.name} \n ` + text.slice(0, 100));
             document.getElementById("countDisplay").textContent = ++count;
             ///
-            let prompto = "Read the content of the following pdf documents and summarize it in the following format; data = [col1:x, col2:y, col3:z, ...] and colDefs=[{field: col1}, {field: col2}, {field: col3}, ...] whereby col are meaningful fields of information that are in all pdf for example min credit (you can pick the columns) and x, y, z are the corresponding value per respective pdf document. Below are the content of the pdfs:  " + pdfContent;
+            let prompto = "Read the content of the following pdf documents and summarize it in the following format; data = [col1:x, col2:y, col3:z, ...] and colDefs=[{field: col1}, {field: col2}, {field: col3}, ...] whereby col are meaningful fields of information that are in all pdf for example min credit (you can pick the columns) and x, y, z are the corresponding value per respective pdf document. Below are the content of the pdfs (remember... return in array format data and colDefs):  " + pdfContent;
             const response = await fetch(backendUrl, {
               method: "POST",
               headers: {
