@@ -4,6 +4,7 @@ import PrintContentsOfPDF from './Components/PrintContentsOfPDF';
 import OpenAi from './Components/OpenAi';
 import Webhook from './Components/Webhook';
 import Apicall from './Components/Apicall';
+import LenderDatabase from './Components/LenderDatabase';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <OpenAi />
       <Webhook />
       <Apicall />
+      <LenderDatabase />
     </div>
   );
 }
