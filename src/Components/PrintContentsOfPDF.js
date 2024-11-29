@@ -4,7 +4,7 @@ import Apicall from "./Apicall";
 
 const PrintContentsOfPDF = () => {
   const [pdfContent, setPdfContent] = useState("");
-  const [summary, setSummary] = useState("")
+  const [summary, setSummary] = useState("Summary placeholder")
   const backendUrl = "https://nodebackend-smmy.onrender.com/api/openai";
   var count = 0;
   const handleFileChange = (event) => {
@@ -30,18 +30,6 @@ const PrintContentsOfPDF = () => {
             setPdfContent(current => current + `\n ${file.name} \n ` + text.slice(0, 100));
             document.getElementById("countDisplay").textContent = ++count;
             ///
-            //let prompto = "Read the content of the following pdf documents and summarize it in the following format; data = [col1:x, col2:y, col3:z, ...] and colDefs=[{field: col1}, {field: col2}, {field: col3}, ...] whereby col are meaningful fields of information that are in all pdf for example min credit (you can pick the columns) and x, y, z are the corresponding value per respective pdf document. Below are the content of the pdfs (remember... return in array format data and colDefs):  " + pdfContent;
-            let prompto = "Summarize the following text in 50 words: " + pdfContent.toString();
-            const response = await fetch(backendUrl, {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ prompt : prompto }),
-            })
-            const data = await response.json();
-            setSummary(data.message.content);
-            console.log(data.message.content);
           } catch (error) {
             console.error("Error reading PDF:", error);
             setPdfContent("Error reading PDF.");
@@ -58,12 +46,31 @@ const PrintContentsOfPDF = () => {
     }) 
   };
 
+  const sendRequest = async () => {
+    let textprompt = "Summarize the following text in 50 words: " + pdfContent;
+    console.log(prompt)
+    try {
+        const response = await fetch(backendUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ prompt : textprompt }),
+        })
+        const data = await response.json();
+        console.log(data.message.content);
+        setSummary(data.message.content)
+    } catch (error){
+        console.log("Error", error);
+    }
+}
   return (
     <div style={{ padding: "20px" }}>
       <h2>Print PDF Contents</h2>
       <input type="file" /* accept="application/pdf"*/ onChange={handleFileChange} multiple />
       <div style={{ marginTop: "20px", whiteSpace: "pre-wrap" }}>
         <h3>PDF Contents:</h3>
+        <button onClick={sendRequest}>Summarize</button>
         <h1>Count: <span id="countDisplay">0</span></h1>
         <p>{pdfContent}</p>
         <p>{summary}</p>
