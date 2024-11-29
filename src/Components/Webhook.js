@@ -11,7 +11,7 @@ function Webhook(){
         eventSource.onmessage = (event) => {
           const data = JSON.parse(event.data);
           console.log("Received webhook data:", data);
-          setWebhookData(data); // Update the state with the new webhook data
+          setWebhookData(x => x + data); // Update the state with the new webhook data
         };
     
         // Close the connection when the component is unmounted
@@ -34,6 +34,7 @@ function Webhook(){
             <button onClick={fetchwebhook}>Fetch Webhooks</button>
             <p>{JSON.stringify(webhookData)}</p>
             <button onClick={print}>print</button>
+            <button onClick={()=>{setWebhookData("null")}}>Reset</button>
         </div>
     )
 }
