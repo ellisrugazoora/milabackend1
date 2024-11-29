@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as pdfjs from "pdfjs-dist/webpack";
-import OpenAi from "./OpenAi";
+import Apicall from "./Apicall";
 
 const PrintContentsOfPDF = () => {
   const [pdfContent, setPdfContent] = useState("");
@@ -54,7 +54,7 @@ const PrintContentsOfPDF = () => {
         <h1>Count: <span id="countDisplay">0</span></h1>
         <p>{pdfContent}</p>
       </div>
-      <OpenAi />
+      <Apicall />
     </div>
   );
 };

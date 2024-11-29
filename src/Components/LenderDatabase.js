@@ -13,6 +13,7 @@ function LenderDatabase(){
             rowSelection="multiple"
             />
         </div>
+        
     )
 }
 

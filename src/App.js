@@ -1,13 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import PrintContentsOfPDF from './Components/PrintContentsOfPDF';
-import OpenAi from './Components/OpenAi';
+// import OpenAi from './Components/OpenAi';
 import Webhook from './Components/Webhook';
-import Apicall from './Components/Apicall';
+// import Apicall from './Components/Apicall';
 import LenderDatabase from './Components/LenderDatabase';
+// import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
   return (
+
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -24,9 +26,9 @@ function App() {
         </a>
       </header>
       <PrintContentsOfPDF />
-      <OpenAi />
+      {/* <OpenAi /> */}
       <Webhook />
-      <Apicall />
+      {/* <Apicall /> */}
       <LenderDatabase />
     </div>
   );

@@ -10,8 +10,10 @@ function Webhook(){
         // Listen for messages from the server
         eventSource.onmessage = (event) => {
           const data = JSON.parse(event.data);
+          let first_name = JSON.parse(event.data.data.first_name);
+        //   let type = JSON.parse(event.data.data.);
           console.log("Received webhook data:", data);
-          setWebhookData(x => [...x, data]); // Update the state with the new webhook data
+          setWebhookData(x => [...x, first_name]); // Update the state with the new webhook data
         };
     
         // Close the connection when the component is unmounted
