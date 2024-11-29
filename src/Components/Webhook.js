@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 function Webhook(){
     const [webhooks, setWebhooks] = useState(0);
-    const [webhookData, setWebhookData] = useState(null);
+    const [webhookData, setWebhookData] = useState([]);
     useEffect(() => {
         const eventSource = new EventSource("https://nodebackend-smmy.onrender.com/events");
     
@@ -11,7 +11,7 @@ function Webhook(){
         eventSource.onmessage = (event) => {
           const data = JSON.parse(event.data);
           console.log("Received webhook data:", data);
-          setWebhookData(x => x + data); // Update the state with the new webhook data
+          setWebhookData(x => [...x, data]); // Update the state with the new webhook data
         };
     
         // Close the connection when the component is unmounted
@@ -30,7 +30,7 @@ function Webhook(){
         console.log(webhooks)
     }
     function reset(){
-        setWebhookData("null")
+        setWebhookData([])
     }
     return (
         <div>
