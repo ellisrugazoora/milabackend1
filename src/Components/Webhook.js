@@ -29,12 +29,15 @@ function Webhook(){
     function print(){
         console.log(webhooks)
     }
+    function reset(){
+        setWebhookData("null")
+    }
     return (
         <div>
             <button onClick={fetchwebhook}>Fetch Webhooks</button>
             <p>{JSON.stringify(webhookData)}</p>
             <button onClick={print}>print</button>
-            <button onClick={()=>{setWebhookData("null")}}>Reset</button>
+            <button onClick={reset}>Reset</button>
         </div>
     )
 }
