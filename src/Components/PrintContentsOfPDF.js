@@ -45,9 +45,9 @@ const PrintContentsOfPDF = () => {
     
     }) 
   };
-
+  const [first, setFirst] = useState("Summarize the following text in 50 words: ")
   const sendRequest = async () => {
-    let textprompt = "Summarize the following text in 50 words: " + pdfContent;
+    let textprompt = first + pdfContent;
     console.log(prompt)
     try {
         const response = await fetch(backendUrl, {
@@ -70,6 +70,7 @@ const PrintContentsOfPDF = () => {
       <input type="file" /* accept="application/pdf"*/ onChange={handleFileChange} multiple />
       <div style={{ marginTop: "20px", whiteSpace: "pre-wrap" }}>
         <h3>PDF Contents:</h3>
+        Prompt: <input type="text" placeholder="Enter prompt" onChange={(e)=>{setFirst(e.target.value); console.log(first)}}/>
         <button onClick={sendRequest}>Summarize</button>
         <h1>Count: <span id="countDisplay">0</span></h1>
         <p>{pdfContent}</p>
