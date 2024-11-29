@@ -27,6 +27,17 @@ const PrintContentsOfPDF = () => {
             console.log(`${file.name}: \n \n \n ${text}`);
             setPdfContent(current => current + `\n ${file.name} \n ` + text.slice(0, 100));
             document.getElementById("countDisplay").textContent = ++count;
+            ///
+            let prompto = "Read the content of the following pdf documents and summarize it in the following format; data = [col1:x, col2:y, col3:z, ...] and colDefs=[{field: col1}, {field: col2}, {field: col3}, ...] whereby col are meaningful fields of information that are in all pdf for example min credit (you can pick the columns) and x, y, z are the corresponding value per respective pdf document. Below are the content of the pdfs:  " + pdfContent;
+            const response = await fetch(backendUrl, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ prompt : prompto }),
+            })
+            const data = await response.json();
+            console.log(data.message.content);
           } catch (error) {
             console.error("Error reading PDF:", error);
             setPdfContent("Error reading PDF.");
@@ -40,10 +51,12 @@ const PrintContentsOfPDF = () => {
         document.getElementById("countDisplay").textContent = ++count;
       }
     
-    })
+    }) 
+  };
+
 
     
-  };
+
 
   return (
     <div style={{ padding: "20px" }}>
