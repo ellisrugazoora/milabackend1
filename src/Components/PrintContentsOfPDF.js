@@ -4,6 +4,7 @@ import Apicall from "./Apicall";
 
 const PrintContentsOfPDF = () => {
   const [pdfContent, setPdfContent] = useState("");
+  const [summary, setSummary] = useState("")
   var count = 0;
   const handleFileChange = (event) => {
     const files = event.target.files;
@@ -37,6 +38,7 @@ const PrintContentsOfPDF = () => {
               body: JSON.stringify({ prompt : prompto }),
             })
             const data = await response.json();
+            setSummary(data.message.content);
             console.log(data.message.content);
           } catch (error) {
             console.error("Error reading PDF:", error);
@@ -54,10 +56,6 @@ const PrintContentsOfPDF = () => {
     }) 
   };
 
-
-    
-
-
   return (
     <div style={{ padding: "20px" }}>
       <h2>Print PDF Contents</h2>
@@ -66,6 +64,7 @@ const PrintContentsOfPDF = () => {
         <h3>PDF Contents:</h3>
         <h1>Count: <span id="countDisplay">0</span></h1>
         <p>{pdfContent}</p>
+        <p>{summary}</p>
       </div>
       <Apicall />
     </div>
