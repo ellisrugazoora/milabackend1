@@ -13,7 +13,7 @@ function Webhook(){
     return (
         <div>
             <button onClick={fetchwebhook}>Fetch Webhooks</button>
-            {JSON.stringify(webhooks, null, 2)}
+            {/* {JSON.stringify(webhooks, null, 2)} */}
         </div>
     )
 }
