@@ -27,7 +27,7 @@ const PrintContentsOfPDF = () => {
               text += textContent.items.map((item) => item.str).join(" ") + "\n";
             }
             console.log(`${file.name}: \n \n \n ${text}`);
-            setPdfContent(current => current + `\n ${file.name} \n ` + text.slice(0, 100));
+            setPdfContent(current => current + `\n ${file.name} \n ` + text);
             document.getElementById("countDisplay").textContent = ++count;
             ///
           } catch (error) {
