@@ -10,9 +10,11 @@ function Webhook(){
         // Listen for messages from the server
         eventSource.onmessage = (event) => {
           const data = JSON.parse(event.data);
+          const deals = event.deals ? JSON.parse(event.deals) : "deals placeholder"
         //   let first_name = JSON.parse(event.data.data.first_name);
         //   let type = JSON.parse(event.data.data.);
-          console.log("Received webhook data:", data);
+          console.log("Received webhook data: ", data);
+          console.log("Deals: ", deals)
           setWebhookData(x => [...x, data]); // Update the state with the new webhook data
         };
     
