@@ -11,7 +11,6 @@ function Webhook(){
         // Listen for messages from the server
         eventSource.onmessage = (event) => {
           const data = JSON.parse(event.data);
-          const deals = JSON.parse(data.deals) 
           const deal_id = data.webhook.meta.entity_id;
           var idSearchableDeal = {};
           data.deals.forEach((deal) => {
