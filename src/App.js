@@ -25,10 +25,10 @@ function App() {
           Learn Reacto
         </a>
       </header>
-      <PrintContentsOfPDF />
+      {/* <PrintContentsOfPDF /> */}
       {/* <OpenAi /> */}
       <Webhook />
-      {/* <Apicall /> */}
+      <Apicall />
       {/* <LenderDatabase /> */}
     </div>
   );

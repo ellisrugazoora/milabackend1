@@ -3,7 +3,7 @@ import * as pdfjs from "pdfjs-dist/webpack";
 import Apicall from "./Apicall";
 
 const PrintContentsOfPDF = (props) => {
-  let scenarioPasson = props.scenario;
+  let scenarioPassOn = props.scenario;
   const [pdfContent, setPdfContent] = useState("");
   const [summary, setSummary] = useState("Summary placeholder")
   const backendUrl = "https://nodebackend-smmy.onrender.com/api/openai";
@@ -75,8 +75,9 @@ const PrintContentsOfPDF = (props) => {
         <button onClick={sendRequest}>Summarize</button>
         <h1>Count: <span id="countDisplay">0</span></h1>
         <p>{pdfContent}</p>
-        <p>{summary}</p>
+        {/* <p>{summary}</p> */}
       </div>
+      <LenderDatabase scenarios={scenarioPassOn} summary={summary}/>
     </div>
   );
 };

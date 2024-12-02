@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import LenderDatabase from "./LenderDatabase";
+import PrintContentsOfPDF from "./PrintContentsOfPDF";
 // import { io } from "socket.io-client";
 
 function Webhook(){
@@ -50,13 +51,14 @@ function Webhook(){
     }
     return (
         <div>
+            <PrintContentsOfPDF scenario={scenario} />
             <button onClick={fetchwebhook}>Fetch Webhooks</button>
             <p>{JSON.stringify(scenario)}</p>
             <p hidden>{JSON.stringify(webhookData)}</p>
             <button onClick={printWebhooks}>Print Webhooks</button>
             <button onClick={printScenarios}>Print scenarios</button>
             <button onClick={resetWebhookDisplay}>Reset</button>
-            <LenderDatabase scenarios={scenario}/>
+            
         </div>
     )
 }
