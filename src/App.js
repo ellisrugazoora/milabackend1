@@ -29,7 +29,7 @@ function App() {
       {/* <OpenAi /> */}
       <Webhook />
       {/* <Apicall /> */}
-      <LenderDatabase />
+      {/* <LenderDatabase /> */}
     </div>
   );
 }

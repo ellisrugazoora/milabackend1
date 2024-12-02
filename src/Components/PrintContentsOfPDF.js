@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import * as pdfjs from "pdfjs-dist/webpack";
 import Apicall from "./Apicall";
 
-const PrintContentsOfPDF = () => {
+const PrintContentsOfPDF = (props) => {
+  let scenarioPasson = props.scenario;
   const [pdfContent, setPdfContent] = useState("");
   const [summary, setSummary] = useState("Summary placeholder")
   const backendUrl = "https://nodebackend-smmy.onrender.com/api/openai";
@@ -76,7 +77,6 @@ const PrintContentsOfPDF = () => {
         <p>{pdfContent}</p>
         <p>{summary}</p>
       </div>
-      <Apicall />
     </div>
   );
 };
