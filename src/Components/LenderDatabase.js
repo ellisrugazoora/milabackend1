@@ -7,6 +7,9 @@ function LenderDatabase(props){
     let colDefs = [{field: "col1"}, {field: "col2"}, {field: "col3"}];
     const scenarios = props.scenario;
     const summary = props.summary;
+    function printSummary(){
+        console.log(summary)
+    }
     return (
         <div className="ag-theme-quartz" style={{ height: 300, width:'70%', minWidth:300, justifyContent:'center' }}>
             <AgGridReact 
@@ -15,7 +18,9 @@ function LenderDatabase(props){
             rowSelection="multiple"
             />
             Evaluate the following against table: <p>{JSON.stringify(scenarios)}</p>
-            The table data be assigned: {summary}
+            {/* The table data be assigned: {summary} */}
+            <button onClick={printSummary}>Print Row Data and </button>
+            {/* <button>Set Row Data and Col Defs</button> */}
         </div>
         
     )

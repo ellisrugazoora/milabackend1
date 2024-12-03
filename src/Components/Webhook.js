@@ -25,7 +25,7 @@ function Webhook(){
           console.log("Received webhook data: ", data.webhook);
           console.log("Deals: ", data.deals)
           setWebhookData(x => [...x, data.webhook]); // Update the state with the new webhook data
-          setScenario(x => [...x, {deal_id: deal_id, person: idSearchableDeal[deal_id]["person_name"], deal: idSearchableDeal[deal_id]}])
+          setScenario(x => [...x, {person: idSearchableDeal[deal_id]["person_name"], deal_id: deal_id,  deal: idSearchableDeal[deal_id]}])
         };
 
         // Close the connection when the component is unmounted
@@ -47,7 +47,8 @@ function Webhook(){
         console.log(scenario)
     }
     function resetWebhookDisplay(){
-        setWebhookData([])
+        //setWebhookData([])
+        setScenario([])
     }
     return (
         <div>
@@ -58,7 +59,6 @@ function Webhook(){
             <button onClick={printWebhooks}>Print Webhooks</button>
             <button onClick={printScenarios}>Print scenarios</button>
             <button onClick={resetWebhookDisplay}>Reset</button>
-            
         </div>
     )
 }
