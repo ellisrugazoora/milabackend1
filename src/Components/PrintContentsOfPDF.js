@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as pdfjs from "pdfjs-dist/webpack";
 import Apicall from "./Apicall";
+import LenderDatabase from "./LenderDatabase";
 
 const PrintContentsOfPDF = (props) => {
   let scenarioPassOn = props.scenario;

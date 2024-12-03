@@ -5,6 +5,7 @@ import PrintContentsOfPDF from './Components/PrintContentsOfPDF';
 import Webhook from './Components/Webhook';
 // import Apicall from './Components/Apicall';
 import LenderDatabase from './Components/LenderDatabase';
+import Apicall from './Components/Apicall';
 // import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
