@@ -29,7 +29,7 @@ const PrintContentsOfPDF = (props) => {
               text += textContent.items.map((item) => item.str).join(" ") + "\n";
             }
             console.log(`${file.name}: \n \n \n ${text}`);
-            setPdfContent(current => current + `\n ${file.name} \n ` + text);
+            setPdfContent(current => current + `\n Lender guideline ${file.name}: \n ` + text);
             document.getElementById("countDisplay").textContent = ++count;
             ///
           } catch (error) {

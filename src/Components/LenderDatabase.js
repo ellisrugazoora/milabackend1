@@ -12,7 +12,7 @@ function LenderDatabase(props){
     const summary = props.summary;
     function printSummary(){
         setRowDataStateful(summary.rowdata);
-        setColDefsStateful(summary.coldefs);
+        setColDefsStateful(summary.colDefs);
         console.log(summary)
     }
     return (
@@ -24,7 +24,7 @@ function LenderDatabase(props){
             />
             Evaluate the following against table: <p>{JSON.stringify(scenarios)}</p>
             {/* The table data be assigned: {summary} */}
-            <button onClick={printSummary}>Print Row Data and </button>
+            <button onClick={printSummary}>Set row data</button>
             {/* <button>Set Row Data and Col Defs</button> */}
         </div>
         
