@@ -7,6 +7,7 @@ const PrintContentsOfPDF = (props) => {
   let scenarioPassOn = props.scenario;
   const [pdfContent, setPdfContent] = useState("");
   const [summary, setSummary] = useState("Summary placeholder")
+  const [separationtext, setSeparationText] = useState("Lender Guideline Document titled")
   const backendUrl = "https://nodebackend-smmy.onrender.com/api/openai";
   var count = 0;
   const handleFileChange = (event) => {
@@ -29,7 +30,7 @@ const PrintContentsOfPDF = (props) => {
               text += textContent.items.map((item) => item.str).join(" ") + "\n";
             }
             console.log(`${file.name}: \n \n \n ${text}`);
-            setPdfContent(current => current + `\n Lender guideline ${file.name}: \n ` + text);
+            setPdfContent(current => current + `\n ${separationtext} ${file.name}: \n ` + text);
             document.getElementById("countDisplay").textContent = ++count;
             ///
           } catch (error) {
@@ -77,6 +78,7 @@ const PrintContentsOfPDF = (props) => {
         <h3>PDF Contents:</h3>
         Prompt: <input type="text" placeholder="Enter prompt" onChange={(e)=>{setFirst(e.target.value); console.log(first)}}/>
         <button onClick={sendRequest}>Summarize</button>
+        <input type="text" placeholder="Enter separation text" onChange={(e)=>{setSeparationText(e.target.value); console.log(separationtext)}}/>
         <h1>Count: <span id="countDisplay">0</span></h1>
         <p>{pdfContent}</p>
         {/* <p>{summary}</p> */}
