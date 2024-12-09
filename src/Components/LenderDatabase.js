@@ -17,14 +17,6 @@ function LenderDatabase(props){
         console.log(summary.rowData);
         console.log(summary.colDefs);
     }
-    function printObj(){
-        let flatRowData = [flattenObject(summary.rowData.Content)];
-        let flatColDefs = getFieldsFromFlatObject(flattenObject(summary.rowData.Content))
-        console.log(flatRowData);
-        console.log(flatColDefs);
-        setRowDataStateful(flatRowData);
-        setColDefsStateful(flatColDefs);
-    }
     function getFieldsFromFlatObject(flatObject) {
         return Object.keys(flatObject).map(key => ({ field: key }));
     }
@@ -57,6 +49,15 @@ function LenderDatabase(props){
     
         return flatObject;
     }
+    function printObj(){
+        let flatRowData = [flattenObject(summary.rowData.Content)];
+        let flatColDefs = getFieldsFromFlatObject(flattenObject(summary.rowData.Content))
+        console.log(flatRowData);
+        console.log(flatColDefs);
+        setRowDataStateful(flatRowData);
+        setColDefsStateful(flatColDefs);
+    }
+    
     return (
         <div className="ag-theme-quartz" style={{ height: 300, width:'70%', minWidth:300, justifyContent:'center' }}>
             <AgGridReact 
