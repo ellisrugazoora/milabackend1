@@ -50,7 +50,7 @@ const PrintContentsOfPDF = (props) => {
   const [first, setFirst] = useState("Summarize the following text in 50 words: ")
   const sendRequest = async () => {
     let textprompt = first + pdfContent;
-    console.log(prompt)
+    console.log("Prompt sent...")
     try {
         const response = await fetch(backendUrl, {
             method: "POST",
@@ -61,7 +61,10 @@ const PrintContentsOfPDF = (props) => {
         })
         const data = await response.json();
         console.log(data.message.content);
-        setSummary(data.message.content)
+        let parsedResultantObject = JSON.parse(data.message.content);
+        console.log("Below is the object: ");
+        console.log(parsedResultantObject);
+        setSummary(parsedResultantObject);
     } catch (error){
         console.log("Error", error);
     }

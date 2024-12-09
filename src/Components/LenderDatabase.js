@@ -11,9 +11,11 @@ function LenderDatabase(props){
     const scenarios = props.scenarios;
     const summary = props.summary;
     function printSummary(){
-        setRowDataStateful(summary.rowdata);
+        setRowDataStateful(summary.rowData);
         setColDefsStateful(summary.colDefs);
         console.log(summary)
+        console.log(summary.rowData);
+        console.log(summary.colDefs);
     }
     return (
         <div className="ag-theme-quartz" style={{ height: 300, width:'70%', minWidth:300, justifyContent:'center' }}>
