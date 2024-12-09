@@ -47,7 +47,8 @@ function LenderDatabase(props){
     
         // Start recursion with the initial object
         recurse(obj, parentKey);
-    
+        flatObject["Lender"] = summary.rowData[0].Lender;
+        flatObject["Lender guideline pdf name"] = summary.rowData[0]["Lender guideline pdf name"];
         return flatObject;
     }
     function setcontent(){
