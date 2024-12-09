@@ -17,6 +17,46 @@ function LenderDatabase(props){
         console.log(summary.rowData);
         console.log(summary.colDefs);
     }
+    function printObj(){
+        let flatRowData = [flattenObject(summary.rowData.Content)];
+        let flatColDefs = getFieldsFromFlatObject(flattenObject(summary.rowData.Content))
+        console.log(flatRowData);
+        console.log(flatColDefs);
+        setRowDataStateful(flatRowData);
+        setColDefsStateful(flatColDefs);
+    }
+    function getFieldsFromFlatObject(flatObject) {
+        return Object.keys(flatObject).map(key => ({ field: key }));
+    }
+    function flattenObject(obj, parentKey = "", delimiter = ".") {
+        const flatObject = {};
+    
+        // Recursive helper function to flatten
+        function recurse(currentObj, currentKey) {
+            for (let key in currentObj) {
+                if (currentObj.hasOwnProperty(key)) {
+                    const newKey = currentKey ? `${currentKey}${delimiter}${key}` : key;
+    
+                    // If the value is an object, recurse
+                    if (
+                        currentObj[key] !== null &&
+                        typeof currentObj[key] === "object" &&
+                        !Array.isArray(currentObj[key])
+                    ) {
+                        recurse(currentObj[key], newKey);
+                    } else {
+                        // Otherwise, assign the value
+                        flatObject[newKey] = currentObj[key];
+                    }
+                }
+            }
+        }
+    
+        // Start recursion with the initial object
+        recurse(obj, parentKey);
+    
+        return flatObject;
+    }
     return (
         <div className="ag-theme-quartz" style={{ height: 300, width:'70%', minWidth:300, justifyContent:'center' }}>
             <AgGridReact 
@@ -27,6 +67,7 @@ function LenderDatabase(props){
             Evaluate the following against table: <p>{JSON.stringify(scenarios)}</p>
             {/* The table data be assigned: {summary} */}
             <button onClick={printSummary}>Set row data</button>
+            <button onClick={printObj}>Print object</button>
             {/* <button>Set Row Data and Col Defs</button> */}
         </div>
         
