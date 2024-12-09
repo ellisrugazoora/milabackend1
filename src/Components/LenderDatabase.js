@@ -8,6 +8,7 @@ function LenderDatabase(props){
     let colDefs = [{field: "col1"}, {field: "col2"}, {field: "col3"}];
     const [rowDataStateful, setRowDataStateful] = useState(rowData);
     const [colDefsStateful, setColDefsStateful] = useState(colDefs);
+    const [content, setContent] = useState({hello: {world: "yup", yay: "yuh"}});
     const scenarios = props.scenarios;
     const summary = props.summary;
     function printSummary(){
@@ -20,7 +21,7 @@ function LenderDatabase(props){
     function getFieldsFromFlatObject(flatObject) {
         return Object.keys(flatObject).map(key => ({ field: key }));
     }
-    function flattenObject(obj, parentKey = "", delimiter = ".") {
+    function flattenObject(obj, parentKey = "", delimiter = "_") {
         const flatObject = {};
     
         // Recursive helper function to flatten
@@ -49,9 +50,12 @@ function LenderDatabase(props){
     
         return flatObject;
     }
+    function setcontent(){
+        setContent(summary.rowData[0].Content)
+    }
     function printObj(){
-        let flatRowData = [flattenObject(summary.rowData.Content)];
-        let flatColDefs = getFieldsFromFlatObject(flattenObject(summary.rowData.Content))
+        let flatRowData = [flattenObject(content)];
+        let flatColDefs = getFieldsFromFlatObject(flattenObject(content))
         console.log(flatRowData);
         console.log(flatColDefs);
         setRowDataStateful(flatRowData);
@@ -69,6 +73,7 @@ function LenderDatabase(props){
             {/* The table data be assigned: {summary} */}
             <button onClick={printSummary}>Set row data</button>
             <button onClick={printObj}>Print object</button>
+            <button onClick={setcontent}>Set Content</button>
             {/* <button>Set Row Data and Col Defs</button> */}
         </div>
         
