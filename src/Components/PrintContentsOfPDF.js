@@ -8,6 +8,7 @@ const PrintContentsOfPDF = (props) => {
   const [pdfContent, setPdfContent] = useState("");
   const [summary, setSummary] = useState("Summary placeholder")
   const [separationtext, setSeparationText] = useState("Lender Guideline Document titled")
+  const [model, setModel] = useState("gpt-3.5-turbo")
   const backendUrl = "https://nodebackend-smmy.onrender.com/api/openai";
   var count = 0;
   const handleFileChange = (event) => {
@@ -58,7 +59,7 @@ const PrintContentsOfPDF = (props) => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ prompt : textprompt }),
+            body: JSON.stringify({ prompt : textprompt, model: model }),
         })
         const data = await response.json();
         console.log(data.message.content);
@@ -70,10 +71,21 @@ const PrintContentsOfPDF = (props) => {
         console.log("Error", error);
     }
 }
+function changeModel(e){
+  let newModel = e.target.value;
+  console.log(newModel);
+  setModel(newModel);
+}
   return (
     <div style={{ padding: "20px" }}>
       <h2>Print PDF Contents</h2>
-      <input type="file" /* accept="application/pdf"*/ onChange={handleFileChange} multiple />
+      <input type="file" /* accept="application/pdf"*/ onChange={handleFileChange} multiple /> <br/>
+      Model: <select placeholder="gpt-3.5-turbo" width="200px" onChange={changeModel}>
+        <option value={"gpt-4o-mini"}>gpt-4o-mini</option>
+        <option value={"gpt-4o"}>gpt-4o</option>
+        <option value={"gpt-4"}>gpt-4</option>
+        <option value={"gpt-3.5-turbo"}>gpt-3.5-turbo</option>
+      </select>
       <div style={{ marginTop: "20px", whiteSpace: "pre-wrap" }}>
         <h3>PDF Contents:</h3>
         Prompt: <input type="text" placeholder="Enter prompt" onChange={(e)=>{setFirst(e.target.value); console.log(first)}}/>
